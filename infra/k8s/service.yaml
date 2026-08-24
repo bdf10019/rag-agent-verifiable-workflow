@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: opsflow-agent
+spec:
+  selector:
+    app: opsflow-agent
+  ports:
+    - name: http
+      port: 80
+      targetPort: http

@@ -1,0 +1,22 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+build/
+dist/
+*.egg-info/
+.env
+.idea/
+.vscode/
+
+# Runtime databases, downloaded public datasets, and generated reports.
+data/*.db
+data/*.db-*
+data/raw/*
+!data/raw/.gitkeep
+outputs/*
+!outputs/.gitkeep

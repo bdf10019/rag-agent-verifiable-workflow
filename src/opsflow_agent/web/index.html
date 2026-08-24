@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="可驗證、可恢復的 RAG 工具代理工作流示範" />
+    <title>RAG Agent 可驗證工作流</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">OFFLINE-FIRST OPERATIONS</p>
+        <h1>RAG Agent 可驗證工作流</h1>
+        <p class="subtitle">受控工具、來源證據、故障復原與人工核准，集中在一條可稽核的任務鏈。</p>
+      </div>
+      <label class="identity">
+        示範身分
+        <select id="identity">
+          <option value="operator">operator</option>
+          <option value="reviewer">reviewer</option>
+          <option value="viewer">viewer</option>
+          <option value="admin">admin</option>
+        </select>
+      </label>
+    </header>
+
+    <main>
+      <section class="metrics" aria-label="工作流指標">
+        <article><span>執行總數</span><strong id="metric-total">0</strong></article>
+        <article><span>待人工核准</span><strong id="metric-review">0</strong></article>
+        <article><span>已完成</span><strong id="metric-completed">0</strong></article>
+        <article><span>執行失敗</span><strong id="metric-failed">0</strong></article>
+      </section>
+
+      <section class="workspace">
+        <article class="panel intake">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">INCIDENT INTAKE</p>
+              <h2>建立調查任務</h2>
+            </div>
+            <div class="demo-actions">
+              <button class="secondary" data-demo="normal">載入一般案例</button>
+              <button class="secondary" data-demo="critical">載入高風險案例</button>
+            </div>
+          </div>
+          <form id="incident-form">
+            <div class="form-grid">
+              <label>資產編號<input id="asset-id" required pattern="[A-Za-z0-9._:-]+" /></label>
+              <label>事件時間（UTC）<input id="occurred-at" type="datetime-local" required /></label>
+              <label>嚴重度
+                <select id="severity"><option>low</option><option selected>medium</option><option>high</option><option>critical</option></select>
+              </label>
+              <label>症狀（逗號分隔）<input id="symptoms" required /></label>
+            </div>
+            <label>調查問題<textarea id="question" rows="3" required minlength="8"></textarea></label>
+            <div class="form-footer">
+              <p>不接受任意 SQL 或外部 URL；所有工具皆由後端 allowlist 控制。</p>
+              <button class="primary" type="submit">執行可驗證工作流</button>
+            </div>
+          </form>
+          <div id="notice" class="notice" role="status" hidden></div>
+        </article>
+
+        <article class="panel runs-panel">
+          <div class="panel-heading">
+            <div><p class="eyebrow">RUNS</p><h2>最近執行</h2></div>
+            <button id="refresh" class="secondary">重新整理</button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>執行</th><th>資產</th><th>狀態</th><th>風險</th><th>更新</th></tr></thead>
+              <tbody id="runs-body"></tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <section id="detail" class="panel detail-panel" hidden>
+        <div class="panel-heading">
+          <div><p class="eyebrow">TRACE &amp; EVIDENCE</p><h2 id="detail-title">執行詳情</h2></div>
+          <span id="detail-status" class="status"></span>
+        </div>
+        <div id="detail-content"></div>
+      </section>
+    </main>
+
+    <footer>本機作品展示 · 原創合成資料 · 無外部 API 費用</footer>
+    <script src="/static/app.js?v=1.0.0" defer></script>
+  </body>
+</html>

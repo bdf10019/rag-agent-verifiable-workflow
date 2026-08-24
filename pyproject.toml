@@ -1,0 +1,60 @@
+[build-system]
+requires = ["setuptools>=75", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "opsflow-agent"
+version = "1.0.0"
+description = "Evidence-backed and recoverable RAG agent workflow for operational incident triage"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "OpsFlow Agent contributors" }]
+dependencies = [
+  "fastapi>=0.115,<1",
+  "pydantic-settings>=2.7,<3",
+  "uvicorn[standard]>=0.34,<1",
+]
+
+[project.optional-dependencies]
+dev = [
+  "httpx>=0.28,<1",
+  "mypy>=1.14,<2",
+  "pytest>=8.3,<10",
+  "pytest-cov>=6,<8",
+  "pyyaml>=6,<7",
+  "ruff>=0.9,<1",
+]
+
+[project.scripts]
+opsflow = "opsflow_agent.cli:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+opsflow_agent = ["web/*.html", "web/*.css", "web/*.js", "resources/sops/*.md"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q --strict-markers"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["B008"]
+
+[tool.mypy]
+python_version = "3.11"
+packages = ["opsflow_agent"]
+ignore_missing_imports = true
+warn_unused_ignores = true
+check_untyped_defs = true
