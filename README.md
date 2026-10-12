@@ -1,5 +1,7 @@
 # RAG Agent 可驗證工作流
 
+授權狀態：現行原創程式未另行授予通用開源授權；歷史版本與第三方／資料授權另見 [LICENSE_INFORMATION.md](LICENSE_INFORMATION.md)。
+
 一套可在本機完整執行的營運事件調查平台。系統將事件驗證、有界任務規劃、唯讀資料工具、SOP 檢索、風險計算、結果驗證、失敗重試、人工核准與稽核軌跡串成一條可恢復工作流。
 
 > 專案狀態：公司實務版 v1.0.0。預設離線、零 API 費用；Git 內資料及 SOP 均為原創示範內容，不含私人資料、客戶資料或未授權素材。
@@ -167,4 +169,4 @@ outputs/                 Git 忽略的執行產出
 
 ## 授權
 
-程式碼、原創 SOP 與原創評測案例使用 [MIT License](LICENSE)。第三方套件與選配公開資料的授權摘要見 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。密碼、Key、Token、私人資料、執行期資料庫、下載資料與大型輸出均不納入 Git。
+現行原創程式未另行授予通用開源授權；歷史 SOP、評測案例與舊版本的權利見 [授權說明](LICENSE_INFORMATION.md)。第三方套件與選配公開資料的授權摘要見 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。密碼、Key、Token、私人資料、執行期資料庫、下載資料與大型輸出均不納入 Git。

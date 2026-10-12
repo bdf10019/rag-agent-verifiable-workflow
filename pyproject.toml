@@ -8,8 +8,7 @@ version = "1.0.0"
 description = "Evidence-backed and recoverable RAG agent workflow for operational incident triage"
 readme = "README.md"
 requires-python = ">=3.11"
-license = "MIT"
-license-files = ["LICENSE"]
+license-files = ["LICENSE_INFORMATION.md"]
 authors = [{ name = "OpsFlow Agent contributors" }]
 dependencies = [
   "fastapi>=0.115,<1",

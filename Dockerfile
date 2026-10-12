@@ -8,7 +8,7 @@ WORKDIR /app
 RUN groupadd --system --gid 10001 app \
     && useradd --system --uid 10001 --gid 10001 --home /app app
 
-COPY pyproject.toml requirements-lock.txt README.md LICENSE ./
+COPY pyproject.toml requirements-lock.txt README.md LICENSE_INFORMATION.md ./
 COPY src ./src
 RUN python -m pip install --no-cache-dir -r requirements-lock.txt \
     && python -m pip install --no-cache-dir --no-deps . \
